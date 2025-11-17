@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "py_mqtt_audio_player"
+version = "0.1.0"
+description = "MQTT-controlled audio player"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+authors = [{ name = "Saurabh Datta", email = "hi@dattasaurabh.com" }]
+dependencies = [
+    "colorama>=0.4.6",
+    "jinja2>=3.1.6",
+    "loguru>=0.7.3",
+    "numpy>=2.2.6",
+    "paho-mqtt>=2.1.0",
+    "pyyaml>=6.0.2",
+    "requests>=2.32.4",
+    "scipy>=1.15.3",
+    "sounddevice>=0.5.2",
+    "soundfile>=0.13.1",
+]
+
+[project.scripts]
+mqtt-audio-player = "main:main"
+audio-player = "main:main"
+
+[tool.setuptools]
+packages = ["config", "player", "mqtt", "input"]
+
+# Tool configurations
+[tool.uv]
+dev-dependencies = [
+    "pyinstaller>=6.0.0",
+    "pytest>=7.0.0",
+]
+
+[tool.isort]
+profile = "black"
+line_length = 88

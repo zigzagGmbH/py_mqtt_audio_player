@@ -1,0 +1,38 @@
+logging:
+  level: INFO
+  max_size_mb: 1
+mqtt:
+  audio_level_freq: 8
+  broker: 127.0.0.1
+  client_id: music_player
+  heartbeat: 'True'
+  heartbeat_freq: 1
+  port: 1883
+  pub:
+    topics:
+      audio_level: service/{{ mqtt.client_id }}/status/audio/level
+      audio_position: service/{{ mqtt.client_id }}/status/audio/position
+      player_health: service/{{ mqtt.client_id }}/status/health
+      player_status: service/{{ mqtt.client_id }}/status/state
+  sub:
+    topics:
+      channel_mask_cmd_topic: /{{ mqtt.client_id }}/cmd/channel_mask
+      file_topic: /{{ mqtt.client_id }}/audio_url
+      loop_toggle_cmd_topic: /{{ mqtt.client_id }}/cmd/loop
+      play_pause_cmd_topic: /{{ mqtt.client_id }}/cmd/session
+      seek_cmd_topic: /{{ mqtt.client_id }}/cmd/seek
+      start_stop_cmd_topic: /{{ mqtt.client_id }}/cmd/player
+      status_check: /{{ mqtt.client_id }}/cmd/status
+      volume_cmd_topic: /{{ mqtt.client_id }}/cmd/volume
+      repeat_cmd_topic: /{{ mqtt.client_id }}/cmd/repeat
+paths:
+  audio_file_dir: audio
+  log_file_dir: logs
+player:
+  audio_level_enabled: 'False'
+  auto_start: 'True'
+  device_channels: 2
+  device_name: Pipe 2.0 USB-C
+  device_sample_rate: 48000
+  playback_channel_mask: [1, 0]
+  playback_volume_factor: 1.0

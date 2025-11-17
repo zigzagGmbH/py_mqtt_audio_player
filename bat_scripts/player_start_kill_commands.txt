@@ -1,0 +1,141 @@
+
+
+OLD
+----
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "powershell -Command \"Register-ScheduledTask -TaskName 'NormalSpeakersPlayerStarter' -User 'user' -RunLevel Highest -Action (New-ScheduledTaskAction -Execute 'C:\\Users\\User\\start_normal_speakers_player.bat' -WorkingDirectory 'C:\\Users\\User') -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries); Start-ScheduledTask -TaskName 'NormalSpeakersPlayerStarter'; Start-Sleep 3; Unregister-ScheduledTask -TaskName 'NormalSpeakersPlayerStarter' -Confirm:\$false\""
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "wmic process where \"name='python.exe' and commandline like '%config-normal-speakers%'\" delete"
+
+✅ normal_speakers_player_config_name = config-normal-speakers 
+✅ normal_speakers_player_process_name = NormalSpeakersPlayerStarter
+✅ normal_speakers_player_bat_file = start_normal_speakers_player.bat
+✅ normal_speakers_cid = speakers-normal
+----
+
+----
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "powershell -Command \"Register-ScheduledTask -TaskName 'SurroundsSpeakersPlayerStarter' -User 'user' -RunLevel Highest -Action (New-ScheduledTaskAction -Execute 'C:\\Users\\User\\start_surrounds_speakers_player.bat' -WorkingDirectory 'C:\\Users\\User') -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries); Start-ScheduledTask -TaskName 'SurroundsSpeakersPlayerStarter'; Start-Sleep 3; Unregister-ScheduledTask -TaskName 'SurroundsSpeakersPlayerStarter' -Confirm:\$false\""
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "wmic process where \"name='python.exe' and commandline like '%config-surrounds%'\" delete"
+
+✅ surrounds_speakers_player_config_name = config-surrounds 
+✅ surrounds_speakers_player_process_name = SurroundsSpeakersPlayerStarter
+✅ surrounds_speakers_player_bat_file = start_surrounds_speakers_player.bat
+✅ audio_player_surrounds_cid = speakers-surrounds
+----
+
+----
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "powershell -Command \"Register-ScheduledTask -TaskName 'Headrest1SpeakersPlayerStarter' -User 'user' -RunLevel Highest -Action (New-ScheduledTaskAction -Execute 'C:\\Users\\User\\start_headrests_speakers_one_player.bat' -WorkingDirectory 'C:\\Users\\User') -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries); Start-ScheduledTask -TaskName 'Headrest1SpeakersPlayerStarter'; Start-Sleep 3; Unregister-ScheduledTask -TaskName 'Headrest1SpeakersPlayerStarter' -Confirm:\$false\""
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "wmic process where \"name='python.exe' and commandline like '%config-headrests-speakers-one%'\" delete"
+
+✅ headrests1_speakers_player_config_name = config-headrests-speakers-one
+✅ headrests1_speakers_player_process_name = Headrest1SpeakersPlayerStarter
+✅ headrests1_speakers_player_bat_file = start_headrests_speakers_one_player.bat
+✅ audio_player_headrests1_cid = speakers-headrest-one
+----
+
+----
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "powershell -Command \"Register-ScheduledTask -TaskName 'Headrest2SpeakerPlayerStarter' -User 'user' -RunLevel Highest -Action (New-ScheduledTaskAction -Execute 'C:\\Users\\User\\start_headrest_speaker_two_player.bat' -WorkingDirectory 'C:\\Users\\User') -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries); Start-ScheduledTask -TaskName 'Headrest2SpeakerPlayerStarter'; Start-Sleep 3; Unregister-ScheduledTask -TaskName 'Headrest2SpeakerPlayerStarter' -Confirm:\$false\""
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "wmic process where \"name='python.exe' and commandline like '%config-headrest-speaker-two%'\" delete"
+
+✅ headrests2_speaker_player_config_name = config-headrest-speaker-two
+✅ headrests2_speaker_player_process_name = Headrest2SpeakerPlayerStarter
+✅ headrests2_speaker_player_bat_file = start_headrest_speaker_two_player.bat
+✅ audio_player_headrests2_cid = speaker-headrest-two
+----
+
+-------------------------------------------
+
+For Testing
+
+----
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "powershell -Command \"Register-ScheduledTask -TaskName 'ShakerPlayerStarter' -User 'user' -RunLevel Highest -Action (New-ScheduledTaskAction -Execute 'C:\\Users\\User\\start_shaker_player.bat' -WorkingDirectory 'C:\\Users\\User') -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries); Start-ScheduledTask -TaskName 'ShakerPlayerStarter'; Start-Sleep 3; Unregister-ScheduledTask -TaskName 'ShakerPlayerStarter' -Confirm:\$false\""
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "wmic process where \"name='python.exe' and commandline like '%config-shakers%'\" delete"
+
+✅ shaker_player_config_name = config-shakers
+✅ shaker_player_process_name = ShakerPlayerStarter
+✅ shaker_player_bat_file = start_shaker_player.bat
+✅ audio_player_shaker_cid = shaker-player (** UPDATED on 06.10.2025 in NODE-RED BECAUSE WE CHANGED ...)
+----
+
+----
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "powershell -Command \"Register-ScheduledTask -TaskName 'MusicPlayer1Starter' -User 'user' -RunLevel Highest -Action (New-ScheduledTaskAction -Execute 'C:\\Users\\User\\start-music-player-1.bat' -WorkingDirectory 'C:\\Users\\User') -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries); Start-ScheduledTask -TaskName 'MusicPlayer1Starter'; Start-Sleep 3; Unregister-ScheduledTask -TaskName 'MusicPlayer1Starter' -Confirm:\$false\""
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "wmic process where \"name='python.exe' and commandline like '%config-music-1%'\" delete"
+
+✅ music_player_1_config_name = config-music-1
+✅ music_player_1_process_name = MusicPlayer1Starter
+✅ music_player_1_bat_file = start-music-player-1.bat
+✅ music_player_1_cid = music-player-1
+----
+
+----
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "powershell -Command \"Register-ScheduledTask -TaskName 'MusicPlayer2Starter' -User 'user' -RunLevel Highest -Action (New-ScheduledTaskAction -Execute 'C:\\Users\\User\\start-music-player-2.bat' -WorkingDirectory 'C:\\Users\\User') -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries); Start-ScheduledTask -TaskName 'MusicPlayer2Starter'; Start-Sleep 3; Unregister-ScheduledTask -TaskName 'MusicPlayer2Starter' -Confirm:\$false\""
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "wmic process where \"name='python.exe' and commandline like '%config-music-2%'\" delete"
+
+✅ music_player_2_config_name = config-music-2
+✅ music_player_2_process_name = MusicPlayer2Starter
+✅ music_player_2_bat_file = start-music-player-2.bat
+✅ music_player_2_cid = music-player-2
+----
+
+
+----
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "powershell -Command \"Register-ScheduledTask -TaskName 'SFXPlayer1Starter' -User 'user' -RunLevel Highest -Action (New-ScheduledTaskAction -Execute 'C:\\Users\\User\\start-sfx-player-1.bat' -WorkingDirectory 'C:\\Users\\User') -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries); Start-ScheduledTask -TaskName 'SFXPlayer1Starter'; Start-Sleep 3; Unregister-ScheduledTask -TaskName 'SFXPlayer1Starter' -Confirm:\$false\""
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "wmic process where \"name='python.exe' and commandline like '%config-sfx-1%'\" delete"
+
+✅ sfx_player_1_config_name = config-sfx-1
+✅ sfx_player_1_process_name = SFXPlayer1Starter
+✅ sfx_player_1_bat_file = start-sfx-player-1.bat
+✅ sfx_player_1_cid = sfx-player-1
+----
+
+----
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "powershell -Command \"Register-ScheduledTask -TaskName 'SFXPlayer2Starter' -User 'user' -RunLevel Highest -Action (New-ScheduledTaskAction -Execute 'C:\\Users\\User\\start-sfx-player-2.bat' -WorkingDirectory 'C:\\Users\\User') -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries); Start-ScheduledTask -TaskName 'SFXPlayer2Starter'; Start-Sleep 3; Unregister-ScheduledTask -TaskName 'SFXPlayer2Starter' -Confirm:\$false\""
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "wmic process where \"name='python.exe' and commandline like '%config-sfx-2%'\" delete"
+
+✅ sfx_player_2_config_name = config-sfx-2
+✅ sfx_player_2_process_name = SFXPlayer2Starter
+✅ sfx_player_2_bat_file = start-sfx-player-2.bat
+✅ sfx_player_2_cid = sfx-player-2
+----
+
+----
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "powershell -Command \"Register-ScheduledTask -TaskName 'VoicePlayer1Starter' -User 'user' -RunLevel Highest -Action (New-ScheduledTaskAction -Execute 'C:\\Users\\User\\start-voice-player-1.bat' -WorkingDirectory 'C:\\Users\\User') -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries); Start-ScheduledTask -TaskName 'VoicePlayer1Starter'; Start-Sleep 3; Unregister-ScheduledTask -TaskName 'VoicePlayer1Starter' -Confirm:\$false\""
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "wmic process where \"name='python.exe' and commandline like '%config-voice-1%'\" delete"
+
+✅ voice_player_1_config_name = config-voice-1
+✅ voice_player_1_process_name = VoicePlayer1Starter
+✅ voice_player_1_bat_file = start-voice-player-1.bat
+✅ voice_player_1_cid = voice-player-1
+----
+
+----
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "powershell -Command \"Register-ScheduledTask -TaskName 'VoicePlayer2Starter' -User 'user' -RunLevel Highest -Action (New-ScheduledTaskAction -Execute 'C:\\Users\\User\\start-voice-player-2.bat' -WorkingDirectory 'C:\\Users\\User') -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries); Start-ScheduledTask -TaskName 'VoicePlayer2Starter'; Start-Sleep 3; Unregister-ScheduledTask -TaskName 'VoicePlayer2Starter' -Confirm:\$false\""
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "wmic process where \"name='python.exe' and commandline like '%config-voice-2%'\" delete"
+
+✅ voice_player_2_config_name = config-voice-2
+✅ voice_player_2_process_name = VoicePlayer2Starter
+✅ voice_player_2_bat_file = start-voice-player-2.bat
+✅ voice_player_2_cid = voice-player-2
+----
+
+----
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "powershell -Command \"Register-ScheduledTask -TaskName 'SysSoundPlayer1Starter' -User 'user' -RunLevel Highest -Action (New-ScheduledTaskAction -Execute 'C:\\Users\\User\\start-sys-sound-player-1.bat' -WorkingDirectory 'C:\\Users\\User') -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries); Start-ScheduledTask -TaskName 'SysSoundPlayer1Starter'; Start-Sleep 3; Unregister-ScheduledTask -TaskName 'SysSoundPlayer1Starter' -Confirm:\$false\""
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "wmic process where \"name='python.exe' and commandline like '%config-sys-sound-1%'\" delete"
+
+✅ sys_sound_player_1_config_name = config-sys-sound-1
+✅ sys_sound_player_1_process_name = SysSoundPlayer1Starter
+✅ sys_sound_player_1_bat_file = start-sys-sound-player-1.bat
+✅ sys_sound_player_1_cid = sys-sound-player-1
+----
+
+----
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "powershell -Command \"Register-ScheduledTask -TaskName 'SysSoundPlayer2Starter' -User 'user' -RunLevel Highest -Action (New-ScheduledTaskAction -Execute 'C:\\Users\\User\\start-sys-sound-player-2.bat' -WorkingDirectory 'C:\\Users\\User') -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries); Start-ScheduledTask -TaskName 'SysSoundPlayer2Starter'; Start-Sleep 3; Unregister-ScheduledTask -TaskName 'SysSoundPlayer2Starter' -Confirm:\$false\""
+✅ sshpass -p "GImeetsEDU" ssh user@192.168.2.20 "wmic process where \"name='python.exe' and commandline like '%config-sys-sound-2%'\" delete"
+
+✅ sys_sound_player_2_config_name = config-sys-sound-2
+✅ sys_sound_player_2_process_name = SysSoundPlayer2Starter
+✅ sys_sound_player_2_bat_file = start-sys-sound-player-2.bat
+✅ sys_sound_player_2_cid = sys-sound-player-2
+----
+
+
+
+

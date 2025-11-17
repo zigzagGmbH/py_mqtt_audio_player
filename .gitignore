@@ -1,0 +1,25 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+*.spec
+*.log
+
+# Virtual environments
+.venv
+# Mac os junk
+.DS_Store
+
+# Experimental files
+*.bak
+*.backup
+*.bkp
+word_timings.json
+config_sfx_player.yaml
+config_narrator_player.yaml
+.*.yaml
+.*.bat
+*~
