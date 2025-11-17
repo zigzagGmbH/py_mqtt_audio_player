@@ -4,21 +4,23 @@
 
 A **cross platform** MQTT based python audio player that responds to MQTT messages to control playback and publishes critical information over MQTT. It can play files at specified sample rates, via specific channels and the self player volume can be dynamically adjusted. It is meant to run headless.
 
-> This allows the same project to be cloned, modified and spawned as many independent players uniquely identifiable by a unique client id and controlled respectively while all accessing the same sound device.
+> [!TIP]
+> This allows the same project to be cloned, modified and spawned as many independent players uniquely identifiable by a unique client id and controlled respectively while all accessing the same sound device, all via passing a new config file
 
 ![alt text](assets/audio_player.png)
 
-> mqtt based dummy controllers (in tools/) <-> player
+> [!TIP]
+> mqtt based dummy controllers can be found in [dummy_mqtt_audio_player_controller](tools/dummy_mqtt_audio_player_controller)
 
 ## Features
 
 ### Audio Playback
 
-- Multi-channel audio support with configurable channel mapping
-- Real-time volume control during playback
-- Loop functionality for continuous playback
-- **Repeat mode** with configurable count and interval (sticky behavior)
-- Seek/jump to specific time positions
+- **Multi-channel** audio support with configurable channel mapping and dynamic channel mapping during playback
+- **Real-time volume control** during playback
+- **Loop** functionality for continuous playback
+- **Repeat** mode with configurable count and interval (sticky behavior)
+- **Seek/jump** to specific time positions
 - Support for various sample rates with automatic resampling
 
 ### MQTT Integration
@@ -43,7 +45,7 @@ project/
 ├── main.py                     # Main application
 ├── config.yaml                 # Player configuration file
 ├── pyproject.toml              # uv manageable Python dependencies and project details
-├── audio/                      # Test Audio files directory (.wav files)
+├── audio/                      # Test Audio file directory (.wav files ONLY please)
 ├── logs/                       # Logs will be saved here
 ├── config/
 │   └── config_loader.py        # Configuration loader
@@ -88,7 +90,7 @@ Make sure that you have `uv` installed in your OS with specific shell integratio
 
 ### Setup
 
-> [IMPORTANT]
+> [!IMPORTANT]
 >
 > For running the  [audio-player](audio-player) (macOS / Linux) or [audio-player.exe](audio-player.exe) in windows you do not need to go through python dependency setup but you would need to, if you want to run a helper script to have a guided "Sounddevice configuration"
 
@@ -122,9 +124,9 @@ python tools/01_config_sound_device.py
 
 Follow the prompts
 
-> [NOTE]
+> [!NOTE]
 >
-> If you know your sound card's system name and total channel count, then you can manually edit the config.yml's "player:" section. You can keep all channels if the channel mask as 1 but make sure that the channel count and the len of channel mask is the same
+> If you know your sound card's system name and total channel count, then you can manually edit the `player:` section of [config.yaml](config.yaml) . You can keep all channels if the channel mask as 1 but make sure that the channel count and the len of channel mask is the same
 
 ## Other Configurations
 
@@ -254,6 +256,9 @@ INITIAL STATE: stopped, repeat=OFF, loop=OFF
 
 #### Example Use Case
 
+> [!Note]
+> More on MQTT control and monitor interface, below
+
 ```bash
 # 1. Configure repeat: play 5 times with 3 second pause between
 mosquitto_pub -t "/player/cmd/repeat" -m '{"count": 5, "interval": 3}'
@@ -284,7 +289,10 @@ mosquitto_pub -t "/player/audio_url" -m "http://server/music.wav"
 
 python main.py                             # Note: This will take config.yml as default config file
 # OR
-python main.py -c [YOUR_CONFIG_FILE].yaml  # Note: But you can always pass a new config file with -c 
+python main.py -c [YOUR_CONFIG_FILE].yaml  # Note: But you can always pass a new config file with -c
+
+# OR 
+uv run main.py -c [YOUR_CONFIG_FILE].yaml
 ```
 
 ---
@@ -320,20 +328,6 @@ Windows:
 
 ```cmd
 setup.bat
-```
-
-Choose your option (Usage Patterns)
-
-### Development Mode
-
-```bash
-uv run main.py                                  # Run with hot reload (Note: it will take config.yml as default config file)
-# OR
-uv run main.py -c [YOUR_CONFIG_FILE].yaml       # Note: you can always pass a new config file with -c
-# OR
-uv run audio-player                             # Run via main binary entry point (Note: it will take config.yml as default config file)
-# OR
-uv run audio-player -c [YOUR_CONFIG_FILE].yaml  # Note: you can always pass a new config file with -c
 ```
 
 ### Standalone Binary
@@ -538,20 +532,6 @@ python -c "import sounddevice as sd; print(sd.query_devices())"
 
 - Adjust `blocksize` in [player/core.py](player/core.py) for your system
 - Monitor CPU usage and buffer underruns
-
-
-## Player assignments as per audio layout
-
-Is beyond the scope of documentation for the core player project, [but it can be found here in project figjam](https://www.figma.com/board/hyUwqNL7sgX9jKMMId9L5e/%F0%9F%9A%99---%F0%9F%A4%96-Artificial-Augmentation---Ongoings?node-id=40003352-29363&t=4wrL04LJiJw4vwxb-4)
-
-## Autostart Instructions
-
-[It can be found here](bat_scripts/README.md)
-
-
-## Test Audio files and FS for test audio files
-
-Follow this [audio/README.md](audio/README.md)
 
 ---
 
